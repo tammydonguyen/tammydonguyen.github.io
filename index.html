@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <head>
-  <title>TAMMY NGUYEN</title>
+  <title>TAMMY DO NGUYEN</title>
+
   <style>
     body {
       text-align: center;
@@ -14,7 +15,7 @@
     }
     h1 {
     	color: white;
-    	font-size: 32px;
+    	font-size: 50px;
     }
     p {
       font-size: 14px;
@@ -26,12 +27,14 @@
     	text-decoration: none;
     	color:rgba(50,50,50,.6);
     	background: white;
-    	border-radius: 7px;
+    	border-radius: 5px;
     	padding: 5px 8px 5px 8px;
     	margin: 0px 4px 0px 4px;
+    	transition: border-radius .3s;
+    	transition: background-color .6s;
+    	transition: color .4s;
     } a:hover {
-    	background: #8899cc;
-    	background: rgba(50,50,50,.7);
+    	border-radius: 2px;
     	background: rgba(85,153,238,.5);
     	color: white;
     }
@@ -46,8 +49,16 @@
     	float:left;
   	}
 
+  	pre {
+    	font-size: 12px;
+    	color:black;
+    	font-family: Lucida Console;
+    	line-height: 14px;
+  	}
+
     #headshot {
     	margin: auto;
+    	margin-bottom: -15px;
     	width: 145px;
     	height: 145px;
     	background-image: url('head2.jpg');
@@ -63,10 +74,76 @@
     	background-color:rgba(50,50,50,0.3);
     	width:550px;
     	margin:auto;
+    	margin-top: -15px;
     	padding:10px;
     }
 
+    #terminal {
+    	display: none;
+    	font-size: 12px;
+    	color:black;
+    	font-family: Lucida Console;
+    	text-align: left;
+    	margin: auto auto 5px auto;
+    	width: 430px;
+    	background-color:white;
+    	padding: 1px 10px 5px 10px;
+    	border-bottom-left-radius: 4px;
+    	border-bottom-right-radius: 4px;
+    } #topbarthing {
+    	display: none;
+    	margin: auto;
+    	background-color:#E6E6E6;
+    	border-top-left-radius: 4px;
+    	border-top-right-radius: 4px;
+    	border-bottom: solid 1px #CCCCCC;
+    	height: 20px;
+    	width:450px;
+    } #red {
+    	display: none;
+    	width: 10px;
+    	height:10px;
+    	border: solid 1px #B83737;
+    	border-radius: 10px;
+    	margin: 4px 5px 3px 5px;
+    	background-color:#FF4D4D;
+    	float:left;
+    } #yellow {
+    	display: none;
+    	width: 10px;
+    	height:10px;
+    	border: solid 1px #CCAF3E;
+    	border-radius: 10px;
+    	margin: 4px 5px 3px 3px;
+    	background-color:#FFDB4D;
+    	float:left;
+    } #green {
+    	display: none;
+    	width: 10px;
+    	height:10px;
+    	border: solid 1px #29A329;
+    	border-radius: 10px;
+    	margin: 4px 0px 3px 3px;
+    	background-color:#33CC33;
+    	float:left;
+    }
+
   </style>
+
+	  <script type="text/javascript">
+	<!--
+	    function drop() {
+	    	  for (var i = 0; i < arguments.length; i++) {
+    			var e = document.getElementById(arguments[i]);
+	       		if(e.style.display == 'block')
+	          		e.style.display = 'none';
+	       		else
+	          		e.style.display = 'block';
+  }
+	       
+	    }
+	//-->
+	</script>
 </head>
 
 <body>
@@ -76,10 +153,19 @@
   <div id="info"> 
   	Hi! I'm Tammy, a rising sophomore at UC Berkeley studying computer science. This site is currently under construction.
 	<ul>
-	<li><a href="#">about me</a></li>
+	<li><a href="#" onclick="drop('terminal', 'topbarthing', 'red', 'yellow', 'green')">about me</a></li>
 	<li><a href="#">my work</a></li>
 	<li><a href="#">connect</a></li>
 	</ul>
+ <div id="topbarthing"><div id="red"></div><div id="yellow"></div><div id="green"></div></div>
+	<div id="terminal">
+<pre>>>> def about_me():
+...     hometown = "San Jose, CA"
+...     age = 19
+...     work = "CS61A Undergraduate Student Instructor"
+...     interests = ["software development", "web design",
+                     "teaching", "puppies"]</pre>
+	</div>
   </div>
 
 </body>
