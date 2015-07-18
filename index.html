@@ -1,191 +1,13 @@
 <!DOCTYPE html>
 
 <head>
-
   	<title>TAMMY DO NGUYEN</title>
-
-  	<style>
-    	body {
-            background: url("assets/bgimg.jpg") no-repeat center center fixed;
-            background-size: cover;
-      		text-align: center;
-      		color: white;
-      		font-family: 'Karla', sans-serif;
-      		margin-top: 100px;
-    	}
-    
-	    h1 {
-	    	font-family: 'Slabo 27px', serif;
-	    	letter-spacing: 3px;
-	    	color: white;
-	    	font-weight: bold;
-	    	font-size: 60px;
-	    }
-
-	    p {
-	      	font-size: 15px;
-	    }
-
-	    a:link, a:visited {
-	    	text-decoration: none;
-	    	font-weight: bold;
-	    	color:rgba(70,70,70,.8);
-	    	transition: background .3s;
-	    } a:hover {
-            color: white;
-	    	background: rgba(85,153,238,.5);
-	    }
-
-        a.nav {
-            display:inline-block;
-            width: auto;
-            font-size: 14px;
-            text-decoration: none;
-            font-weight: bold;
-            color:rgba(50,50,50,.8);
-            background: rgba(255,255,255,.8);
-            padding: 5px 8px 5px 8px;
-            margin: 12px 4px 4px 4px;
-            border-radius: 3px;
-            border: 1px solid rgba(255,255,255,.5);
-            transition: background-color .4s;
-            transition: color .4s;
-        } a.nav:hover {
-            background: rgba(85,153,238,.5);
-            border: 1px solid rgba(85,153,238,.3);
-            color: white;
-        }
-
-        a.icons {
-            display:inline-block;
-            width: 29px;
-            height: 27px;
-            font-size: 22px;
-            text-decoration: none;
-            color: white;
-            padding: 10px 8px 8px 8px;
-            margin: 0px 20px 0px 0px;
-            border-radius: 27px;
-            border: 2px solid white;
-            transition: background .3s;
-        } a.icons:hover {
-            background: rgba(255,255,255,.3);
-        }
-
-        #main {
-            background: url("assets/bgimg.jpg");
-            background-size: cover;
-        }
-
-	    #headshot {
-	    	margin: auto auto -20px auto;
-	    	width: 145px;
-	    	height: 145px;
-	    	background-image: url('assets/head1.jpg');
-	    	background-size: 150px;
-	    	background-position: center;
-	    	border: 3px solid white;
-	    	border-radius: 145px;
-	    } #headshot:hover {
-	    	background-image: url('assets/head2.jpg');
-	    }
-
-	    #info, #about, #connect {
-	    	text-align: center;
-	    	background-color:rgba(50,50,50,0.3);
-	    	width:50%;
-	    	margin: -25px auto auto auto;
-	    	padding:10px;
-	    }
-	    #about {
-	    	margin: auto;
-            padding-top: 0px;
-	    	display: none;
-	    }
-        #connect {
-            margin: auto;
-            padding-bottom: 10px;
-            padding-top: 0px;
-            display: none;
-        }
-
-	    #terminal {
-	    	font-size: 12px;
-	    	color:black;
-	    	font-family: Lucida Console;
-	    	text-align: left;
-	    	margin: 0px auto 10px auto;
-	    	width: 90%;
-	    	background-color:white;
-	    	padding: 7px 10px 7px 12px;
-	    	border-radius: 0px 0px 4px 4px;
-	    	line-height: 14px;
-	    } #topbarthing {
-	    	margin: auto;
-	    	background-color:#E6E6E6;
-	    	border-radius: 4px 4px 0px 0px;
-	    	border-bottom: solid 1px #CCCCCC;
-	    	padding: 1px 10px 0px 7px;
-	    	height: 20px;
-	    	width: 91%;
-	    } 
-	    #red, #yellow, #green {
-	    	width: 10px;
-	    	height:10px;
-	    	border-radius: 10px;
-	    	margin: 4px 9px 3px 0px;
-	    	float:left;
-	    } 
-	    #red {
-	    	background-color:#FF4D4D;
-	    	border: solid 1px #B83737;
-	    }
-	    #yellow {
-	    	background-color:#FFDB4D;
-	    	border: solid 1px #CCAF3E;
-	    } 
-	    #green {
-	    	background-color:#33CC33;
-	    	border: solid 1px #29A329;
-	    }
-
-	    @media (max-width: 800px) {
-	    	h1 {
-	    		font-size: 40px;
-	    	}
-	    	#headshot {
-	    		margin: auto;
-	    	}
-	    	#info {
-	    		margin: auto;
-	    	}	
-	    	#terminal {
-	    		font-size: 8px;
-	    		line-height: 10px;
-	    	}    
-            #topbarthing {
-                height: 10px;
-            }       
-            #red, #yellow, #green {
-                /*display: none;*/
-                width: 5px;
-                height:5px;
-                border-radius: 5px;
-                margin: 2px 7px 3px -3px;
-            } 
-	    }
-
-        #work {
-            margin-top: 70%;
-        }
-
-
-	</style>
-    <link rel="stylesheet" href="assets/animate.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<link rel="stylesheet" href="css/mine.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script> 
 		$(document).ready(function(){
     		$(".about").click(function(){
@@ -206,7 +28,7 @@
 	<div align="center" id="headshot" class="animated fadeIn"></div>
   	<h1 class="animated bounceInLeft"> TAMMY DO NGUYEN </h1>
   	<div id="info" class="animated fadeIn"> 
-        Hello world! This site is currently under construction.
+        Hello, world! This site is currently under construction.
         <div class = "animated bounceIn">
     		<a class="nav about" href="#">about me</a>
     		<a class="nav work" href="#">my work</a>
@@ -222,7 +44,7 @@
 		</div>
   	</div> 
     <div id="connect">
-        <a href="mailto:tammynguyen@berkeley.edu" class="icons">
+        <a href="mailto:tammynguyen@berkeley.edu" class="icons" style="margin-left: 20px">
             <i class="fa fa-envelope-o"></i></a>
         <a href="https://linkedin.com/pub/tammy-nguyen/b7/14/160" class="icons">
             <i class="fa fa-linkedin"></i></a>
