@@ -8,49 +8,32 @@
 	<link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script> 
-		$(document).ready(function(){
-    		$(".about").click(function(){
-       			$("#about").slideToggle("slow");
-                $("#connect").slideUp();
-    		});
-		});
-        $(document).ready(function(){
-            $(".connect").click(function(){
-                $("#connect").slideToggle("slow");
-                $("#about").slideUp();
-            });
-        });
-	</script>
+	<script src="../js/slidin.js"></script>
 </head>
 
 <body>
-	<div align="center" id="headshot" class="animated fadeIn"></div>
-  	<h1 class="animated bounceInLeft"> TAMMY DO NGUYEN </h1>
-  	<div id="info" class="animated fadeIn"> 
-        Hello, world! This site is currently under construction.
-        <div class = "animated bounceIn">
-    		<a class="nav about" href="#">about me</a>
-    		<a class="nav work" href="#">my work</a>
-    		<a class="nav connect" href="#">connect</a>
-        </div>
+<div align="center" id="headshot" class="animated fadeIn"></div>
+<h1 class="animated bounceInLeft"> TAMMY DO NGUYEN </h1>
+<div id="info" class="animated fadeIn"> 
+    Hello, world! This site is currently under construction.
+    <div class = "animated bounceIn">
+		<a class="nav about" href="#">about me</a>
+		<a class="nav work" href="#">my work</a>
+		<a class="nav connect" href="#">connect</a>
+    </div>
+</div>
+<div id="about">
+ 	<div id="topbarthing">
+ 		<div id="red" ></div><div id="yellow"></div><div id="green"></div>
+ 	</div>
+	<div id="terminal">
+		I'm a rising sophomore at UC Berkeley studying computer science. In addition to learning CS, I also really enjoy teaching it. Currently, I am an Undergraduate Student Instructor for the introductory computer science course here, <a href="http://cs61a.org" target="_blank">CS 61A</a>. In my free time I like to hang out with my friends, try new food, go on hikes, play basketball, and watch baby and puppy videos. Let's <a href="#" class="connect">get in touch</a>!
 	</div>
- 	<div id="about">
-	 	<div id="topbarthing">
-	 		<div id="red" ></div><div id="yellow"></div><div id="green"></div>
-	 	</div>
-		<div id="terminal">
-			I'm a rising sophomore at UC Berkeley studying computer science. In addition to learning CS, I also really enjoy teaching it. Currently, I am an Undergraduate Student Instructor for the introductory computer science course here, <a href="http://cs61a.org" target="_blank">CS 61A</a>. In my free time I like to hang out with my friends, try new food, go on hikes, play basketball, and watch baby and puppy videos. Let's <a href="#" class="connect">get in touch</a>!
-		</div>
-  	</div> 
-    <div id="connect">
-        <a href="mailto:tammynguyen@berkeley.edu" class="icons" style="margin-left: 20px">
-            <i class="fa fa-envelope-o"></i></a>
-        <a href="https://linkedin.com/pub/tammy-nguyen/b7/14/160" class="icons">
-            <i class="fa fa-linkedin"></i></a>
-        <a href="http://facebook.com/tammydnguyen" class="icons">
-            <i class="fa fa-facebook"></i></a>
-        <a href="http://github.com/tmmydngyn" class="icons">
-            <i class="fa fa-github"></i></a>
-    </div> 
+</div> 
+<div id="connect">
+    <a href="mailto:tammynguyen@berkeley.edu" class="icons" style="margin-left: 20px"> <i class="fa fa-envelope-o"></i></a>
+    <a href="https://linkedin.com/pub/tammy-nguyen/b7/14/160" class="icons"> <i class="fa fa-linkedin"></i></a>
+    <a href="http://facebook.com/tammydnguyen" class="icons"> <i class="fa fa-facebook"></i></a>
+    <a href="http://github.com/tmmydngyn" class="icons"> <i class="fa fa-github"></i></a>
+</div> 
 </body>
