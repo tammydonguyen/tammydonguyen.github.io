@@ -65,7 +65,7 @@ Implement `multiply`, which takes in a Linked List and mutates it so that each l
 ## Iterables and Iterators
 ### Concepts
 <ol>
-<li><b>What method(s) must **iterables** have?  </b>  </li>
+<li> What method(s) must **iterables** have?   </li>
     `__iter__`
 <li>What method(s) must **iterators** have?  </li>
     `__iter__` AND `__next__`
@@ -125,7 +125,7 @@ Implement `multiply`, which takes in a Linked List and mutates it so that each l
 
 **Explanation**: `Multiples`'s `__iter__` method always returns a *new instance* of `MultiplesIterator`, whereas `MultiplesIterator`'s `__iter__` simply returns itself. For iterables, calling `iter` will reset the iterator, but since iterators just return themselves, they do not reset.
 
-### Writing Iterables and Iterators
+### Writing functions
 1. Fill in the following definition of a generator function which yields every number from `1` to `n` and prints `'factor!'` if the current number is a factor of `n`.  
   
         def print_factor(n):

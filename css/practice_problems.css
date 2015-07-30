@@ -2,7 +2,7 @@ pre, p, ol {
     width: 600px;
 }
 
-li {
+.concepts {
 	font-weight: bold;
 }
 
