@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<title>MT2 Practice Problems Solutions</title>
+
+<link rel="stylesheet" href="../../css/practice_problems.css">
+
+
+
+<xmp theme="journal" style="display:none;">
+<div id="sidebar">
+    <h3>Navigation</h3>
+    <a href="#scope">Variable Scope</a> <br />
+    <a href="#list-mut">List Mutability</a> <br />
+    <a href="#link">Mutable Linked Lists</a> <br />
+    <a href="#iter">Iterables and Iterators</a> <br />
+    <a href="/cs61a/practice_problems.html">< Problems</a>  <br />
+   </div>
+
+<a name="scope"></a>
+## Variable Scope
+    >>> this(sub, d)()
+    Error, second function call missing an argument
+    >>> this(print, 40)(d)
+    40 30
+    >>> this(lambda x, y : y, d)(20)
+    20
+    >>> that(d, 0)(sub)
+    30
+    <function ...> 
+    >>> other = that(10, this)(print)
+
+    >>> other()
+    10 5
+    None
+
+<a name="list-mut"></a>
+## List Mutability
+<iframe width="650" height="400" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=wow+%3D+%5B0,+'c',+'s'%5D%0A%0Adef+f(x%29%3A%0A++++omg+%3D+%5B%5D%0A++++y+%3D+lambda+%3A+x+-+5%0A++++def+g(%29%3A%0A++++++++nonlocal+x%0A++++++++while+x+%3E+len(omg%29%3A%0A++++++++++++x+%3D+y(%29%0A++++++++++++omg.append(x%29%0A++++++++return+omg%5B0%3A2%5D%0A++++return+g(%29%0A%0Alol+%3D+f(11%29%0Awow.extend(lol%29%0Alol+%3D+wow+%2B+%5B'a'%5D%0Awow+%3D+lol%5B1%3A%5D&origin=opt-frontend.js&cumulative=true&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=300"> </iframe>
+
+<a name="link"></a>
+## Mutable Linked Lists
+Implement `multiply`, which takes in a Linked List and mutates it so that each link is duplicated by the amount of its entry. See the doctests for examples.
+
+    def multiply(link):
+        """ 
+        >>> link = Link(2, Link(3))
+        >>> multiply(link)
+        >>> link
+        Link(2, Link(2, Link(3, Link(3, Link(3)))))
+        >>> link = Link(4, Link(1, Link(2)))
+        >>> multiply(link)
+        >>> link
+        Link(4, Link(4, Link(4, Link(4, Link(1, Link(2, Link(2)))))))
+        """
+        def helper(link, count):
+            if count == 1 and link.rest != Link.empty:
+                multiply(link.rest)
+            elif count != 1 and link != Link.empty:
+                link.rest = Link(link.first, link.rest)
+                helper(link.rest, count - 1)
+        helper(link, link.first)
+
+<a name="iter"></a>   
+
+## Iterables and Iterators
+### Concepts
+<ol>
+<li><b>What method(s) must **iterables** have?  </b>  </li>
+    `__iter__`
+<li>What method(s) must **iterators** have?  </li>
+    `__iter__` AND `__next__`
+<li>What data type does `__iter__` return? </li>
+    iterator
+<li>What data type does `__next__` return?  </li>
+    whatever type each element of the sequence is
+<li>Is a **generator** an iterable or an iterator?  </li>
+    iterator
+<li>What keyword in the body of a function makes that function return a generator object?  </li>
+    `yield`
+<li>How is `yield` different from `return`?    </li>
+    `yield` does not close the frame. `yield` outputs a value, and keeps the frame open until `StopIteration` is raised.
+<li>When you call `next` on a generator, the body starts executing at what line? At what line will it stop? At what line will it start the next time you call `next`?  </li>
+    execution starts at the first line of the body and stops after the line with `yield` is executed. when `next` is called again, execution picks up at the line right after the `yield` statement (where it last left off) and stops after another `yield` execution *or* if there are no more lines in the body.
+<li>What happens when you call `list` on an iterable or an iterator? What happens if you call it a second time on the same objects?  </li>
+    when you call `list` on an iterable or an iterator, Python calls `iter` on it and then attempts to construct a list with the `next` element until `StopIteration` is reached, then returns the constructed list.
+<li>Can you iterate through an iterable in a for loop? Can you iterate through an iterator in a for loop?  </li>
+    you can use both iterables and iterators in a for loop. </li>
+</ol>
+
+### What would Python print?
+
+    >>> hundreds = Multiples(100)
+    >>> next(hundreds)
+    TypeError: 'Multiples' object is not an iterator
+    >>> next(iter(hundreds))
+    100
+    >>> next(iter(hundreds))
+    100
+    >>> i = iter(hundreds)
+    >>> i is iter(hundreds)
+    False
+    >>> i is iter(i)
+    True
+    >>> next(i)
+    100
+    >>> next(i)
+    200
+    >>> list(m)
+    [100, 200, 300, 400, 500, 600, 700, 800, 900]
+    >>> list(i)
+    [300, 400, 500, 600, 700, 800, 900]
+    >>> list(m)
+    [100, 200, 300, 400, 500, 600, 700, 800, 900]
+    >>> list(i)
+    []
+    >>> for i in m:
+    ...     if i > 500:
+    ...         print(i)
+    5
+    25
+    125
+    625
+    >>> for x in i:
+    ...     print(x)
+
+**Explanation**: `Multiples`'s `__iter__` method always returns a *new instance* of `MultiplesIterator`, whereas `MultiplesIterator`'s `__iter__` simply returns itself. For iterables, calling `iter` will reset the iterator, but since iterators just return themselves, they do not reset.
+
+### Writing Iterables and Iterators
+1. Fill in the following definition of a generator function which yields every number from `1` to `n` and prints `'factor!'` if the current number is a factor of `n`.  
+  
+        def print_factor(n):
+            curr = 1
+            while curr <= n:
+                if n % curr == 0:
+                    print('factor!')
+                yield curr
+                curr += 1
+
+2. Implement `mimic_list` so that it behaves like Python's built-in `list` constructor. See WWPP answers for examples of the behavior.
+
+        def mimic_list(iterable):
+            i = iter(iterable) # get iterable's iterator object
+            lst = []  # create an empty list
+            try:
+                while True:   # add next element to lst until the sequence is done
+                    curr = next(i)
+                    lst.append(curr)
+            except StopIteration as e: # return lst when the sequence is done
+                return lst  
+
+3. Recall that all `__iter__` methods must return an iterator type. Well, a generator *is* an iterator, so you can write `__iter__` to be a generator function! Write the `__iter__` method for BinarySearchTree such that it returns a generator. Calling `next` on this generator will return the elements of the BST in ascending order.
+
+        class BinaryTree:
+            empty = ()
+
+            def __init__(self, entry, left=empty, right=empty):
+                self.entry = entry
+                if left: assert isinstance(left, BinaryTree) 
+                if right: assert isinstance(right, BinaryTree)
+                self.left = left
+                self.right = right
+
+            def __iter__(self):
+                """
+                >>> tree = BinaryTree(4, BinaryTree(2), BinaryTree(7, BinaryTree(5)))
+                >>> for entry in tree:
+                ...     print(entry)
+                2
+                4
+                5
+                7
+                """
+                for value in self.left:
+                    yield value
+
+                yield self.entry
+
+                for value in self.right:
+                    yield value
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>

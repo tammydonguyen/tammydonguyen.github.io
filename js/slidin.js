@@ -1,12 +1,21 @@
 $(document).ready(function(){
 	$(".about").click(function(){
-			$("#about").slideToggle("slow");
+		$("#about").slideToggle("slow");
         $("#connect").slideUp();
+        $("#work").slideUp();
 	});
 });
 $(document).ready(function(){
     $(".connect").click(function(){
         $("#connect").slideToggle("slow");
         $("#about").slideUp();
+        $("#work").slideUp();
+    });
+});
+$(document).ready(function(){
+    $(".work").click(function(){
+        $("#work").slideToggle("slow");
+        $("#about").slideUp();
+        $("#connect").slideUp();
     });
 });

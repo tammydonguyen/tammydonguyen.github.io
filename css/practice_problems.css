@@ -1,0 +1,15 @@
+pre, p, ol {
+    width: 600px;
+}
+
+li {
+	font-weight: bold;
+}
+
+#sidebar {
+    width: 200px;
+    position: fixed;
+    right:50px;
+    font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+    font-size: 20px;
+}

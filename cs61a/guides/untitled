@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<title>Recursion</title>
+
+
+<xmp theme="journal" style="display:none;">
+<br />
+Recursion allows you to solve problems by breaking it into smaller pieces until you get a piece small enough that you know the answer to. Think of it like this: you're in line to get ice cream and you want to know how many people are in front of you. Instead of manually counting every person in line, you figure you can just ask the person in front of you how many people are in front of him/her, and then add one to that! You don't care how this person gets their number, but you're just going to assume it's correct and then use that to solve your problem. This is what many refer to as the recursive *leap of faith*. You are taking a chance that this random stranger tells you the correct number.
+
+### Questions to Ask Yourself
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
