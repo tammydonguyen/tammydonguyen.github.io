@@ -9,6 +9,40 @@
 
 ----
 
+## Terminology  
+It is very important to fully understand all the terms that are associated with OOP before you attempt to write any code.  
+
+- **object:** anything that has attributes and/or performs actions (think real life objects!)  
+- **class:** a type or category of objects  
+- **instance:**  a single object belonging to some class  
+- **instance attribute:**  an attribute that is specific to each instance of a class
+- **class attribute:**  an attribute that is the same for all instances of a class  
+- **method:**  an action that an object can perform in the form of a function  
+
+### Example
+Let's say we wanted to represent puppies as **objects**. Our **class** would be called `Puppy`. If we want two puppies we would create two **instances** of the `Puppy` class. Some attributes that are specific to each `Puppy` is its `size` and its `color`. Thus, these can be **instance attributes**. Let's say we want to keep the number of puppies that exist. This would be stored as a **class attribute**, `num_puppies`, since it is the same for all puppies. If you're still having trouble differentiating between instance and class attributes, ask yourself this question: if I change this value for one object, must it change for all other objects? In this case, if one dog grows to a larger `size`, that will not directly affect any other dogs' `size` attribute. However, if more puppies are created and `num_puppies` gets incremented, the population increases for every `Puppy` in our puppy world. Finally, what are our puppies able to do? They should be able to `bark`, `eat`, and `play`. These will be the **methods**. Now let's implement it!
+
+## Implementation
+    class Puppy:
+        """puppies are the best thing that could've happened to Earth"""
+
+        def __init__(name, self, size, color):
+        	self.name = name
+        	self.size = size
+        	self.color = color
+        	self.hungry = False
+        	self.happy = 5
+
+        def play(self, toy):
+        	print("I love playing with " + toy + "!")
+        	self.happy += 1
+        	self.hungry = True
+
+        def eat(self, food):
+        	print(food + " is my favorite thing to eat EVER")
+        	self.happy += 1
+        	self.hungry = False
+        	
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
