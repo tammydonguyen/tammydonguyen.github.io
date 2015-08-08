@@ -1,0 +1,7 @@
+.solution-toggle:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+.solution {
+    display: none;
+}

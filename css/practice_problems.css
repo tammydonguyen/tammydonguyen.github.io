@@ -1,5 +1,5 @@
 pre, p, ol {
-    width: 600px;
+    width: 650px;
 }
 
 .concepts {
@@ -9,7 +9,17 @@ pre, p, ol {
 #sidebar {
     width: 200px;
     position: fixed;
+    margin-top: 20px;
     right:50px;
     font-family: "News Cycle","Arial Narrow Bold",sans-serif;
     font-size: 20px;
+}
+
+.solution, .solution-2, .solution-3, .solution-4, .solution-5, .solution-6 {
+    display: none;
+}
+
+.solution-p, .solution-2-p, .solution-3-p, .solution-4-p {
+    display: none;
+    margin-top: -15px;
 }

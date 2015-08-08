@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<title>Scheme</title>
+
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link href="../../css/guides.css" rel="stylesheet"></link>
+<script src="../../js/slidin.js"></script>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3>CS61A Resources</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- stuff next to header -->
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/cs61a/resources.html">Resources</a></li>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Guides</a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/cs61a/guides/env-diag.html">Env. Diagrams</a></li>
+            <li><a href="/cs61a/guides/recursion.html">Recursion</a></li>
+            <li><a href="/cs61a/guides/oop.html">OOP</a></li>
+            <li><a href="#">Scheme</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Practice Problems</a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/cs61a/practice-problems/mt2.html">Midterm 2</a></li>
+            <li><a href="/cs61a/practice-problems/final.html">Final</a></li>
+          </ul>
+        </li>
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+</body>
+
+<xmp theme="journal" style="display:none;">
+<br />
+**This page is under construction!**
+
+----
+## Intro  
+Scheme, a dialect of another language called Lisp, is a very powerful functional programming language. In this class, we are only concerned with a very basic subset of the Scheme language which includes writing basic procedures, manipulating pairs and lists, writing tail recursive procedures, and working with streams. 
+
+This guide assumes you know basic scheme, including primitives, variable and procedure definitions, and call expressions. For a quick review, what would Scheme output after each of the following lines are input? 
+
+<pre><code>scm> (define x 3)  ; binds 3 to the name x
+<span class="solution">x</span>
+scm> (define y (+ 10 x))  ; binds sum of 10 and x to the name y
+<span class="solution">y</span>
+scm> y
+<span class="solution">13</span>
+scm> (define (foo x y)  ; define a procedure named foo
+		(cond ((> x y) 1)
+			  ((< x y) -1)
+			  (else 0)))
+<span class="solution">foo</span>
+scm> 'foo
+<span class="solution">foo</span>
+scm> (eval '(foo y x))
+<span class="solution">1</span>
+scm> ((lambda (x y) (if (< x y) 'less-than 'greater-than)) y x)
+<span class="solution">greater-than</span>
+scm> '(a b c)
+<span class="solution">(a b c)</span></code></pre>
+
+<a class="btn btn-default solution-toggle">TOGGLE SOLUTION</a>
+
+If you had any trouble with this, take time to review the [scheme lab](http://cs61a.org/lab/lab11/).
+
+## Lists
+Lists in Scheme are a lot like Linked Lists in Python. Whereas a Linked List in Python is comprised of several `Link`s, a list in Scheme is made up of pairs.
+
+#### Pairs
+A pair is the fundamental sequential unit in Scheme. To create one, use `cons`. `cons` takes in two arguments and creates a pair out of them.
+
+    scm> (cons 3 5)
+    (3 . 5)
+
+The elements in a pair are separated by a dot. To retrieve the first element, use `car`. To retrieve the second element, use `cdr`.
+
+	scm> (define lst (cons 2 3))
+	lst
+	scm> (car lst)
+	2
+	scm> (cdr (cons 4 5))
+	5
+
+The entries in a pair can be other pairs. 
+
+	scm> (define lst (cons 3 (cons 4 5)))
+	lst
+	scm> lst
+	(3 4 . 5)
+	scm> (car lst)
+	3
+	scm> (cdr lst)
+	(4 . 5)
+	scm> (cdr (cdr lst))
+	5
+    scm> (cons (cons 4 5) (cons 6 7))
+    ((4 . 5) 6 . 7)
+
+When Scheme sees a `.` immediately followed by an open parenthesis, it removes the dot, the open parenthesis, *and* the corresponding close parenthesis. This way, we can construct what's known as a **well-formed list** from a bunch of pairs!  
+
+#### Well-formed lists
+A well-formed list is actually just a pair whose first argument is the first element of the list and the second argument is another well-formed list. The last list argument is an empty list, or `nil`, to signify the end of the sequence.
+
+	scm> (cons 5 nil) ; one-element list
+	(5)
+	scm> (cons 1 (cons 2 (cons 3 nil))) ; three-element list
+	(1 2 3)
+	scm> (cons 1 (cons 2 (cons 3 '()))) ; same as previous
+	(1 2 3)
+
+The take-away is this: `cons` can be used to create a list if and only if the first arugument is the first element of the list and the second argument is another list, which can be `nil`.
+
+	scm> (define first 1)
+	first
+	scm> (define rest '(2 3 4 5)) 
+	rest
+	scm> (cons first rest)
+	(1 2 3 4 5)
+
+Notice above that it is possible to also create lists with `'`. Keep in mind that this will create the exact list that comes after it, which means we can't do something like `'(1 (cons 2 nil))`.   
+
+Scheme provides us with an alternate to `cons` that is much more succinct and readable: `list`. `list` takes in an arbitrary number of arguments and will simply create a well formed list of them.
+
+	scm> (list 1 2 3 4)
+	(1 2 3 4)
+
+If one of the arguments is a list, then it'll be a list inside a list!
+
+	scm> (list 1 2 (list 3 4) 5)
+	(1 2 (3 4) 5)
+	scm> (list 1 2 (cons 3 (cons 4 nil)) 5)
+	(1 2 (3 4) 5)
+
+> **Summary**  
+1. A list is a pair whose second entry is another list.  
+2. To construct a pair, use `cons`.  
+3. To construct a list using `cons`, pass through its first element as the first argument and the rest of the list as the second argument.
+4. To use `list` to construct a list, pass through every element in the list.  
+5. To retrieve the first element of a pair or list, call `car`.   
+6. To retrieve the second element of a pair or the rest of a list, call `cdr`.
+
+## Tail Recursion
+Scheme supports optimized tail recursion, meaning that if a function is called in **tail context**, Scheme will close the frame that called it and simply return the value that the tail call returns. Scheme thus allows for an unbounded number of tail calls, unlike Python, which will raise a `RuntimeError: 'maximum recursion depth exceeded'` because all the frames stay open. 
+
+#### Tail Context 
+An expression is in a **tail context** if it is the last expression to be evaluated in the frame. Thus, a call expression is a **tail call** if it is one of the following:  
+
+* the last sub-expression in the body of a `lambda` expression
+* the second or third sub-expression in an `if` expression
+* a non-predicate sub-expression in a `cond` expression
+* the last sub-expression in an `and` or `or` expression
+* the last sub-expression in a `begin` expression
+
+#### Test your understanding
+What are the tail calls in the following functions? Are they tail recursive?
+    
+    (define (foo x y)
+    	(if (> x y) 
+    		(foo (- x y)) 
+    		y))
+
+    (define (bar x)
+    	(if (bar x) x
+    		(- (bar x) 1))
+
+    (define (baz x)
+    	(and (foo x 1) #t (baz 4)))
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+<link href="../../css/lumen.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+
+<style>
+.navbar .nav>li>.dropdown-menu:before, .navbar .nav>li>.dropdown-menu:after {
+    margin-left: 70%;
+}
+</style>
+
+</html>
