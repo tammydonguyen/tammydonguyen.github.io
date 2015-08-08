@@ -259,9 +259,9 @@ Fill in the following definition of a generator function which yields every numb
     <span class="solution-2-prompt">"*** YOUR CODE HERE ***"</span>
     <span class="solution-2-p">curr = 1
 while curr <= n:
-    if n % curr == 0:
-        print('factor!')
     yield curr
+    if n % curr == 0:
+        print(str(curr) + " was a factor")
     curr += 1</span></code></pre>
 
 <a class="solution-toggle-2-p btn btn-default">TOGGLE SOLUTION</a>
