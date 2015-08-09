@@ -62,12 +62,12 @@ a.nav {
 
 a.icons {
     display:inline-block;
-    width: 29px;
+    width: 27px;
     height: 27px;
     font-size: 22px;
     text-decoration: none;
     color: white;
-    padding: 10px 8px 8px 8px;
+    padding: 7px 8px 8px 8px;
     margin: 0px 20px 0px 0px;
     border-radius: 27px;
     border: 2px solid white;
@@ -103,7 +103,7 @@ a.icons {
 }
 #connect {
     margin: auto;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     padding-top: 0px;
     display: none;
 }
