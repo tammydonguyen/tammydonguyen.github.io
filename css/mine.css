@@ -89,7 +89,7 @@ a.icons {
 	background-image: url('../assets/head2.jpg');
 }
 
-#info, #about, #connect, #work {
+#info, #about, #connect, #resources {
 	text-align: center;
 	background-color:rgba(50,50,50,0.3);
 	width:450px;
@@ -107,13 +107,13 @@ a.icons {
     padding-top: 0px;
     display: none;
 }
-#work {
+#resources {
     margin: auto;
     padding-bottom: 10px;
     padding-top: 0px;
     display: none;
 }
-#work a {
+#resources a {
 	color: white;
 }
 
@@ -165,10 +165,10 @@ a.icons {
 	#headshot {
 		margin: auto auto auto auto;
 	}
-	#info, #about, #connect, #work {
+	#info, #about, #connect, #resources {
 		margin: 5px auto auto auto;
 		width: 300px;
-	} #about, #connect, #work {
+	} #about, #connect, #resources {
 		margin: auto;
 	}	
 	#terminal {

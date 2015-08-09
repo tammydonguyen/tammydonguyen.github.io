@@ -18,7 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h3>CS61A Resources</h3>
+      <h3>Scheme</h3>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,6 +41,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Practice Problems</a>
           <ul class="dropdown-menu" role="menu">
+            <li><a href="/cs61a/practice-problems/scheme.html">Scheme</a></li>
             <li><a href="/cs61a/practice-problems/mt2.html">Midterm 2</a></li>
             <li><a href="/cs61a/practice-problems/final.html">Final</a></li>
           </ul>
@@ -62,13 +63,13 @@ Scheme, a dialect of another language called Lisp, is a very powerful functional
 
 This guide assumes you know basic scheme, including primitives, variable and procedure definitions, and call expressions. For a quick review, what would Scheme output after each of the following lines are input? 
 
-<pre><code>scm> (define x 3)  ; binds 3 to the name x
+<pre><code>scm> (define x 3)  
 <span class="solution">x</span>
-scm> (define y (+ 10 x))  ; binds sum of 10 and x to the name y
+scm> (define y (+ 10 x))  
 <span class="solution">y</span>
 scm> y
 <span class="solution">13</span>
-scm> (define (foo x y)  ; define a procedure named foo
+scm> (define (foo x y)  
 		(cond ((> x y) 1)
 			  ((< x y) -1)
 			  (else 0)))
@@ -147,20 +148,32 @@ Scheme provides us with an alternate to `cons` that is much more succinct and re
 	scm> (list 1 2 3 4)
 	(1 2 3 4)
 
-If one of the arguments is a list, then it'll be a list inside a list!
+Be careful, though; whereas with `cons` you can pass through the rest of the list as the second argument, passing lists through to `list` will create nested lists!
 
 	scm> (list 1 2 (list 3 4) 5)
 	(1 2 (3 4) 5)
 	scm> (list 1 2 (cons 3 (cons 4 nil)) 5)
 	(1 2 (3 4) 5)
 
-> **Summary**  
+You can check whether a list is empty using `(null? lst)`. This is like asking whether `(= lst nil)`.
+
+    scm> (null? nil)
+    True
+    scm> (null? (list 1 2 3))
+    False
+    scm> (null? '())
+    True
+
+>**Summary**  
 1. A list is a pair whose second entry is another list.  
 2. To construct a pair, use `cons`.  
 3. To construct a list using `cons`, pass through its first element as the first argument and the rest of the list as the second argument.
-4. To use `list` to construct a list, pass through every element in the list.  
+4. To construct a list using `list`, pass through every element in the list.  
 5. To retrieve the first element of a pair or list, call `car`.   
-6. To retrieve the second element of a pair or the rest of a list, call `cdr`.
+6. To retrieve the second element of a pair or the rest of a list, call `cdr`.  7. Check whether a list is empty using the predicate `null?`.
+
+<a class="btn btn-default" href="/cs61a/practice-problems/scheme.html#lists">basic problems</a>&nbsp;&nbsp;
+<a class="btn btn-default" href="/cs61a/practice-problems/final.html#scheme-lists">exam-level problems</a>
 
 ## Tail Recursion
 Scheme supports optimized tail recursion, meaning that if a function is called in **tail context**, Scheme will close the frame that called it and simply return the value that the tail call returns. Scheme thus allows for an unbounded number of tail calls, unlike Python, which will raise a `RuntimeError: 'maximum recursion depth exceeded'` because all the frames stay open. 
@@ -168,26 +181,53 @@ Scheme supports optimized tail recursion, meaning that if a function is called i
 #### Tail Context 
 An expression is in a **tail context** if it is the last expression to be evaluated in the frame. Thus, a call expression is a **tail call** if it is one of the following:  
 
-* the last sub-expression in the body of a `lambda` expression
-* the second or third sub-expression in an `if` expression
-* a non-predicate sub-expression in a `cond` expression
-* the last sub-expression in an `and` or `or` expression
-* the last sub-expression in a `begin` expression
+* the last sub-expression in the body of a tail-context `lambda` expression
+* the second or third sub-expression in a tail-context `if` expression
+* a non-predicate sub-expression in a tail-context `cond` expression
+* the last sub-expression in a tail-context `and` or `or` expression
+* the last sub-expression in a tail-context `begin` expression
 
-#### Test your understanding
-What are the tail calls in the following functions? Are they tail recursive?
+A function is then **tail recursive** if the recursive call(s) is a/are tail call(s).
+
+##### Test your understanding
+**Answer these questions for the following functions.**  
+1. What are the tail calls?  
+2. Are the recursive calls tail calls?  
+3. Is the function tail recursive?  
     
     (define (foo x y)
     	(if (> x y) 
     		(foo (- x y)) 
-    		y))
+    		(+ x y)))
+
+<span class="solution">1. `(foo (- x y))` is a tail call because it is the second subexpression in the `if` expresssion. `(+ x y)` is also a tail call because it is the third subexpression in the `if` expression.  
+2. Yes, the recursive call `(foo (- x y))` is a tail call.  
+3. Yes, because the recursive call is a tail call. </span>
+<a class="btn btn-default solution-toggle">toggle solution</a>
 
     (define (bar x)
     	(if (bar x) x
-    		(- (bar x) 1))
+    		(- (bar 9) 1))
+
+<span class="solution-2">1. `(- (bar 9) 1)` is a tail call because it is the third subexpression in the `if` expresssion.  
+2. The recursive calls `(bar x)` is not a tail call because it is the first subexpression in the `if` expression. The recursive call `(bar 9)` is also not a tail call because it is an argument of the tail call.  
+3. No, because the recursive calls are not tail calls.</span>
+<a class="btn btn-default solution-toggle-2">toggle solution</a>
 
     (define (baz x)
-    	(and (foo x 1) #t (baz 4)))
+    	(cond ((bar x) (begin (foo x x) (baz (+ x x))))
+            ((baz 1) (baz 2))
+            (else (and (foo x 1) #t (bar 4))))
+          )
+
+<span class="solution-3">1. `(baz (+ x x))` is a tail call because it is the last subexpression in a tail-context `begin` expression. `(baz 2)` is a tail call because it is a non-predicate subexpression in the `cond` expression. `(bar 4)` is a tail call because it is the last subexpression in a tail-context `and` expression.  
+2. Two of the tail calls mentioned above are recursive calls. The recursive call `(baz 1)` is not a tail call because it is a predicate subexpression in the `cond` expression.  
+3. No, even though there are two recursive tail calls, there is a recursive call that is not a tail call.</span>
+<a class="btn btn-default solution-toggle-3">toggle solution</a>
+
+## Iteration through recursion
+In Python, you would fix maximum recursion depth issues by writing the function iteratively. That way, everything would happen in the same frame. However, there is no such thing as iteration in Scheme! Instead, we can use recursive helper functions to simulate iteration.  
+For example, let's try to write a function that adds an element to the end of a list. Here's our first attempt:
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

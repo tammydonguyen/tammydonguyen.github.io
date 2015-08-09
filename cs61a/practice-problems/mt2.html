@@ -15,7 +15,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h3>CS61A Resources</h3>
+      <h3>Midterm 2 Practice Problems</h3>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,6 +38,7 @@
         <li class="dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Practice Problems</a>
           <ul class="dropdown-menu" role="menu">
+            <li><a href="/cs61a/practice-problems/scheme.html">Scheme</a></li>
             <li><a href="#">Midterm 2</a></li>
             <li><a href="/cs61a/practice-problems/final.html">Final</a></li>
           </ul>
@@ -52,7 +53,7 @@
 <xmp theme="journal" style="display:none;">
 <div id="sidebar">
     <h3>Navigation</h3>
-    <a href="#scope">Variable Scope</a> <br />
+    <a href="#">Variable Scope</a> <br />
     <a href="#list-mut">List Mutability</a> <br />
     <a href="#link">Mutable Linked Lists</a> <br />
     <a href="#iter">Iterables and Iterators</a> <br />
@@ -115,10 +116,7 @@ Draw the environment diagram for the following code.
     lol = wow + ['a']
     wow = lol[1:]
 
-<div class="solution-2">
-<iframe width="650" height="400" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=wow+%3D+%5B0,+'c',+'s'%5D%0A%0Adef+f(x%29%3A%0A++++omg+%3D+%5B%5D%0A++++y+%3D+lambda+%3A+x+-+5%0A++++def+g(%29%3A%0A++++++++nonlocal+x%0A++++++++while+x+%3E+len(omg%29%3A%0A++++++++++++x+%3D+y(%29%0A++++++++++++omg.append(x%29%0A++++++++return+omg%5B0%3A2%5D%0A++++return+g(%29%0A%0Alol+%3D+f(11%29%0Awow.extend(lol%29%0Alol+%3D+wow+%2B+%5B'a'%5D%0Awow+%3D+lol%5B1%3A%5D&origin=opt-frontend.js&cumulative=true&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=300"> </iframe>
-</div>
-<a class="solution-toggle-2 btn btn-default">TOGGLE SOLUTION</a>
+<a class="btn btn-default" target="_blank" href="http://www.pythontutor.com/visualize.html#code=wow+%3D+%5B0,+'c',+'s'%5D%0A%0Adef+f(x%29%3A%0A++++omg+%3D+%5B%5D%0A++++y+%3D+lambda+%3A+x+-+5%0A++++def+g(%29%3A%0A++++++++nonlocal+x%0A++++++++while+x+%3E+len(omg%29%3A%0A++++++++++++x+%3D+y(%29%0A++++++++++++omg.append(x%29%0A++++++++return+omg%5B0%3A2%5D%0A++++return+g(%29%0A%0Alol+%3D+f(11%29%0Awow.extend(lol%29%0Alol+%3D+wow+%2B+%5B'a'%5D%0Awow+%3D+lol%5B1%3A%5D&mode=display&origin=opt-frontend.js&cumulative=true&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=28">OPEN SOLUTION</a>
 
 <a name="link"></a> 
 ## Mutable Linked Lists 
@@ -134,7 +132,7 @@ Implement `multiply`, which takes in a Linked List and mutates it so that each l
     >>> multiply(link)
     >>> link
     Link(4, Link(4, Link(4, Link(4, Link(1, Link(2, Link(2)))))))
-    """
+    """ 
     <span class="solution-prompt">"*** YOUR CODE HERE ***"</span>
     <span class="solution-p">def helper(link, count):
         if count == 1 and link.rest != Link.empty:
@@ -145,10 +143,8 @@ Implement `multiply`, which takes in a Linked List and mutates it so that each l
     helper(link, link.first)</span></code></pre>
 
 <a class="solution-toggle-p btn btn-default">TOGGLE SOLUTION</a>
-
-<a name="iter"></a>   
-  
-
+      
+<a name="iter"></a>  
 ## Iterables and Iterators
 ### Concepts
 <ol>
@@ -171,11 +167,12 @@ Implement `multiply`, which takes in a Linked List and mutates it so that each l
 <li>What happens when you call `list` on an iterable or an iterator? What happens if you call it a second time on the same objects?  </li>
 <span class="solution-4"><b>when you call `list` on an iterable or an iterator, Python calls `iter` on it and then attempts to construct a list with the `next` element until `StopIteration` is reached, then returns the constructed list.</b></span>
 <li>Can you iterate through an iterable in a for loop? Can you iterate through an iterator in a for loop?  </li>
-<span class="solution-4"><b>you can use both iterables and iterators in a for loop.</b></span>
+<span class="solution-4"><b>you can use both iterables and iterators in a for loop.</b></span> 
 </ol>
 
 <a class="solution-toggle-4 btn btn-default">TOGGLE SOLUTION</a>
 
+  
 ### What would Python print?
 The following classes define an iterable representing the sequence of multiples for any given number and the iterator that returns the next value in the sequence. The sequence goes up to 1000.
 
