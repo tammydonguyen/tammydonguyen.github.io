@@ -20,7 +20,6 @@ pre, p, ol {
 
 .solution, .solution-2, .solution-3, .solution-4, .solution-5, .solution-6 {
     display: none;
-    line-height: 0px;
 }
 
 .solution-p, .solution-2-p, .solution-3-p, .solution-4-p {
