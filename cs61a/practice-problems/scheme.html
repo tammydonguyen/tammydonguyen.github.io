@@ -33,6 +33,7 @@
             <li><a href="/cs61a/guides/recursion.html">Recursion</a></li>
             <li><a href="/cs61a/guides/oop.html">OOP</a></li>
             <li><a href="/cs61a/guides/scheme.html">Scheme</a></li>
+            <li><a href="/cs61a/guides/tail-recursion.html">Tail Recursion</a></li>
           </ul>
         </li>
         <li class="dropdown active">
@@ -54,7 +55,6 @@
 <xmp theme="journal" style="display:none;">
 <div id="sidebar" style="margin-top: -10px">
     <h3>Navigation</h3>
-    <a href="#">Lambdas</a> <br />
     <a href="#lists">Lists</a> <br />
     <a href="#tail">Tail Recursion</a> <br />
     <a href="#streams">Streams</a> <br />
@@ -64,7 +64,7 @@
 
 ----
 
-<a name="lists"></a>
+<a name="lists" class="anchor"></a>
 ## Lists
 1. Write a function `attach` which returns a new list with `elem` added to the end of a list. Do not use the built-in function `append`.
         scm> (attach 1000 '())
@@ -75,7 +75,7 @@
         (4 3 5 2)
 
     <pre><code>(define (attach elem lst)
-    <span class="solution-prompt">  "YOUR-CODE-HERE"
+    <span class="solution-prompt">  "YOUR CODE HERE"
     )</span>
     <span class="solution-p"> (if (null? lst) (list elem)
       (cons (car lst) (attach elem (cdr lst))))
@@ -85,26 +85,49 @@
     What will the following call return?
     <pre><code>scm> (attach '(d e) '(a b c))<br><span class="solution">(a b c (d e))</span></code></pre>
     <a class="solution-toggle btn btn-default">TOGGLE SOLUTION</a>
-2. Write a function that checks whether `lst` contains `elem`. 
-        scm> (contains '(1 2 3 4) 3)
-        True        
-        scm> (contains '(1 2 (6) 4) '(6))
-        True
-        scm> (contains '() 'a)
-        False
 
-    <pre><code>(define (contains lst elem)
-    <span class="solution-2-prompt">  "YOUR-CODE-HERE"
+
+<a name="tail" class="anchor"></a>
+## Tail Recursion
+1. Look at the solutions I've provided for `attach`. What are the tail calls? Is the function tail recursive? 
+<blockquote class="solution-3">`attach` is not tail recursive. The tail calls are a call to `list` and a call to `cons`.</blockquote>&nbsp;<a class="solution-toggle-3 btn btn-default">TOGGLE SOLUTION</a>
+
+2. Write `append` tail recursively. `append` takes two lists and combines them into one.
+
+    <pre><code>scm> (append '() '(1 2 3))
+(1 2 3)
+scm> (append '(a b c) '())
+(a b c)
+scm> (append '(c s) '(6 1 a))
+(c s 6 1 a)</code></pre>
+
+    <pre><code>(define (append lst1 lst2)
+    <span class="solution-3-prompt">  "YOUR CODE HERE"
     )</span>
-    <span class="solution-2-p"> (cond ((null? lst) #f)
-      ((eq? (car lst) elem) #t)
-      (else (contains (cdr lst) elem))))
+    <span class="solution-3-p">  (if (null? lst1) lst2
+      &nbsp; &nbsp;(cons (car lst1) (append (cdr lst1) lst2)))
     )</span></code></pre>
-    <a class="solution-toggle-2-p btn btn-default">toggle solution</a>
+    <a class="solution-toggle-3-p btn btn-default">TOGGLE SOLUTION</a>
 
-    What will the following calls return?
-    <pre><code>scm> (contains (cons 1 (list 3)) '(3))<br><span class="solution-2">False</span><br>scm> (contains (list 1 (list 3)) '(3))<br><span class="solution-2">True</span></code></pre>
-    <a class="solution-toggle-2 btn btn-default">TOGGLE SOLUTION</a>
+<a name="streams" class="anchor"></a>
+## Streams
+Write a function `powers` that returns a stream of all the powers of `n`.  
+
+    scm> (powers 3)
+    (3 . #[promise (not forced)])
+    scm> (stream-to-list (powers 3) 10)
+    (3 9 27 81 243 729 2187 6561 19683 59049)
+    scm> (stream-to-list (powers 2) 10)
+    (2 4 8 16 32 64 128 256 512 1024)
+
+<pre><code>(define (powers n)
+<span class="solution-4-prompt">  "YOUR CODE HERE"
+)</span>
+<span class="solution-4-p">  (define (helper curr)
+    (cons-stream curr (helper (* n curr))))
+  (helper n)
+)</span></code></pre>
+<a class="solution-toggle-4-p btn btn-default">TOGGLE SOLUTION</a>
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

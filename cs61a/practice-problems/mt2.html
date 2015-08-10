@@ -33,6 +33,7 @@
             <li><a href="/cs61a/guides/recursion.html">Recursion</a></li>
             <li><a href="/cs61a/guides/oop.html">OOP</a></li>
             <li><a href="/cs61a/guides/scheme.html">Scheme</a></li>
+            <li><a href="/cs61a/guides/tail-recursion.html">Tail Recursion</a></li>
           </ul>
         </li>
         <li class="dropdown active">
@@ -52,15 +53,19 @@
 </body>
 
 <xmp theme="journal" style="display:none;">
-<div id="sidebar">
+<div id="sidebar" style="margin-top: -10px">
     <h3>Navigation</h3>
-    <a href="#">Variable Scope</a> <br />
+    <a href="#scope">Variable Scope</a> <br />
     <a href="#list-mut">List Mutability</a> <br />
     <a href="#link">Mutable Linked Lists</a> <br />
     <a href="#iter">Iterables and Iterators</a> <br />
 </div>
+<br>
+<p>These problems are designed to be around exam difficulty. For more basic problems, see the topic-based guides and practice problems!</p>
 
-<a name="scope"></a>
+---
+
+<a name="scope" class="anchor"></a>
 ## Variable Scope
     
     from operator import sub
@@ -95,7 +100,7 @@ The code above is loaded into the Python interpreter. What would the following l
 
 <a class="solution-toggle btn btn-default">TOGGLE SOLUTION</a>
 
-<a name="list-mut"></a> 
+<a name="list-mut" class="anchor"></a> 
 ## List Mutability
 Draw the environment diagram for the following code.  
     
@@ -119,7 +124,7 @@ Draw the environment diagram for the following code.
 
 <a class="btn btn-default" target="_blank" href="http://www.pythontutor.com/visualize.html#code=wow+%3D+%5B0,+'c',+'s'%5D%0A%0Adef+f(x%29%3A%0A++++omg+%3D+%5B%5D%0A++++y+%3D+lambda+%3A+x+-+5%0A++++def+g(%29%3A%0A++++++++nonlocal+x%0A++++++++while+x+%3E+len(omg%29%3A%0A++++++++++++x+%3D+y(%29%0A++++++++++++omg.append(x%29%0A++++++++return+omg%5B0%3A2%5D%0A++++return+g(%29%0A%0Alol+%3D+f(11%29%0Awow.extend(lol%29%0Alol+%3D+wow+%2B+%5B'a'%5D%0Awow+%3D+lol%5B1%3A%5D&mode=display&origin=opt-frontend.js&cumulative=true&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=28">OPEN SOLUTION</a>
 
-<a name="link"></a> 
+<a name="link" class="anchor"></a> 
 ## Mutable Linked Lists 
 Implement `multiply`, which takes in a Linked List and mutates it so that each link is duplicated by the amount of its entry. See the doctests for examples.
 
@@ -145,7 +150,7 @@ Implement `multiply`, which takes in a Linked List and mutates it so that each l
 
 <a class="solution-toggle-p btn btn-default">TOGGLE SOLUTION</a>
       
-<a name="iter"></a>  
+<a name="iter" class="anchor"></a>  
 ## Iterables and Iterators
 1. Implement `mimic_list` so that it behaves like Python's built-in `list` constructor. See WWPP answers for examples of the behavior.
 

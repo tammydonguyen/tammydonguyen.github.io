@@ -33,6 +33,7 @@
             <li><a href="/cs61a/guides/recursion.html">Recursion</a></li>
             <li><a href="/cs61a/guides/oop.html">OOP</a></li>
             <li><a href="/cs61a/guides/scheme.html">Scheme</a></li>
+            <li><a href="/cs61a/guides/tail-recursion.html">Tail Recursion</a></li>
           </ul>
         </li>
         <li class="dropdown active">
@@ -59,34 +60,34 @@
     <a href="#code">Code Writing</a> <br />
 </div>
 
-### Concepts
-<ol>
+## Concepts
+<ol style="width: 75%">
 <li> What method(s) must **iterables** have?   </li>
-<span class="solution-4"><b>`__iter__`</b></span>
+<blockquote class="solution-4">`__iter__`</blockquote>
 <li>What method(s) must **iterators** have?  </li>
-<span class="solution-4"><b>`__iter__` AND `__next__`</b></span>
+<blockquote class="solution-4">`__iter__` AND `__next__`</blockquote>
 <li>What data type does `__iter__` return? </li>
-<span class="solution-4"><b>iterator</b></span>
+<blockquote class="solution-4">iterator</blockquote>
 <li>What data type does `__next__` return?</li>
-<span class="solution-4"><b>whatever type each element of the sequence is</b></span>
+<blockquote class="solution-4">whatever type each element of the sequence is</blockquote>
 <li>Is a **generator** an iterable or an iterator?  </li>
-<span class="solution-4"><b>iterator</b></span>
+<blockquote class="solution-4">iterator</blockquote>
 <li>What keyword in the body of a function makes that function return a generator object?  </li>
-<span class="solution-4"><b>`yield`</b></span>
+<blockquote class="solution-4">`yield`</blockquote>
 <li>How is `yield` different from `return`?    </li>
-<span class="solution-4"><b>`yield` does not close the frame. `yield` outputs a value, and keeps the frame open until `StopIteration` is raised.</b></span>
+<blockquote class="solution-4">`yield` does not close the frame. `yield` outputs a value, and keeps the frame open until `StopIteration` is raised.</blockquote>
 <li>When you call `next` on a generator, the body starts executing at what line? At what line will it stop? At what line will it start the next time you call `next`?  </li>
-<span class="solution-4"><b>execution starts at the first line of the body and stops after the line with `yield` is executed. when `next` is called again, execution picks up at the line right after the `yield` statement (where it last left off) and stops after another `yield` execution *or* if there are no more lines in the body.</b></span>
+<blockquote class="solution-4">execution starts at the first line of the body and stops after the line with `yield` is executed. when `next` is called again, execution picks up at the line right after the `yield` statement (where it last left off) and stops after another `yield` execution *or* if there are no more lines in the body.</blockquote>
 <li>What happens when you call `list` on an iterable or an iterator? What happens if you call it a second time on the same objects?  </li>
-<span class="solution-4"><b>when you call `list` on an iterable or an iterator, Python calls `iter` on it and then attempts to construct a list with the `next` element until `StopIteration` is reached, then returns the constructed list.</b></span>
+<blockquote class="solution-4">when you call `list` on an iterable or an iterator, Python calls `iter` on it and then attempts to construct a list with the `next` element until `StopIteration` is reached, then returns the constructed list.</blockquote>
 <li>Can you iterate through an iterable in a for loop? Can you iterate through an iterator in a for loop?  </li>
-<span class="solution-4"><b>you can use both iterables and iterators in a for loop.</b></span> 
+<blockquote class="solution-4">you can use both iterables and iterators in a for loop.</blockquote> 
 </ol>
 
 <a class="solution-toggle-4 btn btn-default">TOGGLE SOLUTION</a>
 
-<a name="wwpp"></a>  
-### What would Python print?
+<a class="anchor" name="wwpp"></a>  
+## What would Python print?
 The following classes define an iterable representing the sequence of multiples for any given number and the iterator that returns the next value in the sequence. The sequence goes up to 1000.
 
     class Multiples:
@@ -142,13 +143,14 @@ What will the following lines output?
 >>> for x in i:
 ...     print(x)</code></pre>
 
-<span class="solution-3">**Explanation**: `Multiples`'s `__iter__` method always returns a *new instance* of `MultiplesIterator`, whereas `MultiplesIterator`'s `__iter__` simply returns itself. For iterables, calling `iter` will reset the iterator, but since iterators just return themselves, they do not reset.</span>
+<p class="solution-6">**Explanation**: `Multiples`'s `__iter__` method always returns a *new instance* of `MultiplesIterator`, whereas `MultiplesIterator`'s `__iter__` simply returns itself. For iterables, calling `iter` will reset the iterator, but since iterators just return themselves, they do not reset.</p>
 
-<a class="solution-toggle-3 btn btn-default">TOGGLE SOLUTION</a>
+<a class="solution-toggle-3 btn btn-default">TOGGLE SOLUTION</a> &nbsp;
+<a class="solution-toggle-6 btn btn-default">TOGGLE EXPLANATION</a>
 
-<a name="code"></a>  
-### Writing code
-1. Fill in the following definition of a generator function which yields every number from `1` to `n` and prints `'m was a factor'` if the previous number, `m`, was a factor of `n`. See the doctests for an example.
+<a class="anchor" name="code"></a>  
+## Writing code
+Fill in the following definition of a generator function which yields every number from `1` to `n` and prints `'m was a factor'` if the previous number, `m`, was a factor of `n`. See the doctests for an example.
   
 <pre><code>def print_factor(n):
     """

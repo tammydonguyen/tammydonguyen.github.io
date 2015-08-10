@@ -1,9 +1,16 @@
-pre, p, ol {
-    width: 650px;
+pre, p {
+    width: 75%;
 }
 
-.concepts {
-	font-weight: bold;
+ol {
+    width: 100%;
+}
+
+.anchor{
+    display: block;
+    height: 55px; 
+    margin-top: -55px; 
+    visibility: hidden;
 }
 
 #sidebar {
