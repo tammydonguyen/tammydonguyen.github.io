@@ -130,19 +130,32 @@ Below is the implementation of our `Puppy` class. Read through it and try to fig
                 print("No thanks! Let's play!")
 
 #### Test your understanding
-> 1. What are all the instance attributes of a `Puppy`?    
-> 2. What is a puppy's name initialized to? What are its hungriness and happiness levels initialized to?  
-> 3. What is the class attribute? Where does it change? What is it keeping track of?  
-> 4. What common parameter do all methods have?
-> 5. Does the `bark` method change the state of the `Puppy`?    
-> 6. What must be passed through to the `play` method?   
-> 7. Under what condition will a `Puppy` `play`?  
-> 8. How much does playing increase the puppy's `happiness`?  
-> 9. How much does a puppy's `hungriness` increase by after playing?  
-> 10. What must be passed through to the `eat` method?
-> 11. Under what condition will a `Puppy` `eat`?  
-> 12. How does the state of the puppy change after eating?
+1. What are all the instance attributes of a `Puppy`?    
+<blockquote class="solution">`name`, `fav_toys`, `hungriness`, `happyiness`</blockquote>
+2. What is a puppy's name initialized to? What are its hungriness and happiness levels initialized to?  
+<blockquote class="solution">The `name` argument passed to the constructor, `0`, `5` respectively.</blockquote>
+3. What is the class attribute? Where does it change? What is it keeping track of?  
+<blockquote class="solution">`num_puppies`, changes in constructor (when puppies are created), keeps track of total number puppies.</blockquote>
+4. What common parameter do all methods have?  
+<blockquote class="solution">`self`</blockquote>
+5. Does the `bark` method change the state of the `Puppy`?  
+<blockquote class="solution">no, it does not change any attributes.</blockquote>  
+6. What must be passed through to the `play` method?   
+<blockquote class="solution">a toy argument of type string.</blockquote>
+7. Under what condition will a `Puppy` `play`?  
+<blockquote class="solution">if `hungriness` is less than `5`.</blockquote>
+8. How much does playing increase the puppy's `happiness`?  
+<blockquote class="solution">if `toy` is one of the puppies `fav_toys`, then `happiness` will increase by `2`. otherwise it increases by `1`.</blockquote>
+9. How much does a puppy's `hungriness` increase by after playing?  
+<blockquote class="solution">`hungriness` increases by `1` after playing</blockquote>
+10. What must be passed through to the `eat` method?
+<blockquote class="solution">a food argument of type string.</blockquote>
+11. Under what condition will a `Puppy` `eat`?  
+<blockquote class="solution">if hungriness is not `0`.</blockquote>
+12. How does the state of the puppy change after eating?
+<blockquote class="solution">`hungriness` decreases by `1`, `happiness` increases by `1`.</blockquote>
 
+<a class="btn btn-default solution-toggle">TOGGLE SOLUTION</a>
 
 ## Usage
 Now that we have an outline of what `Puppy` object keeps track of and does, let's make some puppies!  
