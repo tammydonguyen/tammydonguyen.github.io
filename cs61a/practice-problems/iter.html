@@ -109,7 +109,7 @@ The following classes define an iterable representing the sequence of multiples 
             if self.curr >= 1000:
                 raise StopIteration
             val = self.curr
-            self.curr = self.curr * self.num
+            self.curr = self.curr + self.num
             return val
             
 What will the following lines output?
@@ -129,15 +129,15 @@ What will the following lines output?
 <span class="solution-3">100</span>
 >>> next(i)
 <span class="solution-3">200</span>
->>> list(m)
+>>> list(hundreds)
 <span class="solution-3">[100, 200, 300, 400, 500, 600, 700, 800, 900]</span>
 >>> list(i)
 <span class="solution-3">[300, 400, 500, 600, 700, 800, 900]</span>
->>> list(m)
+>>> list(hundreds)
 <span class="solution-3">[100, 200, 300, 400, 500, 600, 700, 800, 900]</span>
 >>> list(i)
 <span class="solution-3">[]</span>
->>> for i in m:
+>>> for i in hundreds:
 ...     print(i)
 <span class="solution-3">5<br>25<br>125<br>625</span>
 >>> for x in i:
