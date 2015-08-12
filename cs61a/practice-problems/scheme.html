@@ -86,13 +86,7 @@
     <pre><code>scm> (attach '(d e) '(a b c))<br><span class="solution">(a b c (d e))</span></code></pre>
     <a class="solution-toggle btn btn-default">TOGGLE SOLUTION</a>
 
-
-<a name="tail" class="anchor"></a>
-## Tail Recursion
-1. Look at the solutions I've provided for `attach`. What are the tail calls? Is the function tail recursive? 
-<blockquote class="solution-3">`attach` is not tail recursive. The tail calls are a call to `list` and a call to `cons`.</blockquote>&nbsp;<a class="solution-toggle-3 btn btn-default">TOGGLE SOLUTION</a>
-
-2. Write `append` tail recursively. `append` takes two lists and combines them into one.
+2. Implement `append`, which takes two lists and combines them into one.
 
     <pre><code>scm> (append '() '(1 2 3))
 (1 2 3)
@@ -108,6 +102,22 @@ scm> (append '(c s) '(6 1 a))
       &nbsp; &nbsp;(cons (car lst1) (append (cdr lst1) lst2)))
     )</span></code></pre>
     <a class="solution-toggle-3-p btn btn-default">TOGGLE SOLUTION</a>
+
+
+<a name="tail" class="anchor"></a>
+## Tail Recursion
+1. Look at the solutions I've provided for `attach` and `append`. What are the tail calls? Are the functions tail recursive?  
+<blockquote class="solution-4">`attach` is not tail recursive. The tail calls are a call to `list` and a call to `cons`. The tail call for `append` is to `cons`. This is also not tail recursive, since the recursive call is passed as an argument to `cons`.  </blockquote>
+<a class="solution-toggle-4 btn btn-default">TOGGLE SOLUTION</a>
+
+2. Now, implement `append` tail recursively. Remember, this means that any recursive call to `append` must be in a tail context.
+    <pre><code>(define (append lst1 lst2)
+    <span class="solution-5-prompt">  "YOUR CODE HERE"
+    )</span>
+    <span class="solution-5-p">  (if (null? lst1) lst2
+      &nbsp; &nbsp;(cons (car lst1) (append (cdr lst1) lst2)))
+    )</span></code></pre>
+    <a class="solution-toggle-9-p btn btn-default">TOGGLE SOLUTION</a>
 
 <a name="streams" class="anchor"></a>
 ## Streams
