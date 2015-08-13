@@ -145,23 +145,22 @@ scm>  (compare-len '(h i) '(b y e))
 
 <a name="streams" class="anchor"></a>
 ## Streams
-Write a function `powers` that returns a stream of all the powers of `n`.  
-
-    scm> (powers 3)
-    (3 . #[promise (not forced)])
-    scm> (stream-to-list (powers 3) 10)
-    (3 9 27 81 243 729 2187 6561 19683 59049)
-    scm> (stream-to-list (powers 2) 10)
-    (2 4 8 16 32 64 128 256 512 1024)
-
-<pre><code>(define (powers n)
-<span class="solution-4-prompt">  "YOUR CODE HERE"
-)</span>
-<span class="solution-4-p">  (define (helper curr)
-    (cons-stream curr (helper (* n curr))))
-  (helper n)
-)</span></code></pre>
+1. Write a function `powers` that returns a stream of all the powers of `n`.  
+<pre><code>scm> (powers 3)
+(3 . #[promise (not forced)])
+scm> (stream-to-list (powers 3) 10)
+(3 9 27 81 243 729 2187 6561 19683 59049)
+scm> (stream-to-list (powers 2) 10)
+(2 4 8 16 32 64 128 256 512 1024)</code></pre>
+    <pre><code>(define (powers n)
+    <span class="solution-4-prompt">  "YOUR CODE HERE"
+    )</span>
+    <span class="solution-4-p">  (define (helper curr)
+     &nbsp; &nbsp;(cons-stream curr (helper (* n curr))))
+     &nbsp; &nbsp;(helper n)
+    )</span></code></pre>
 <a class="solution-toggle-4-p btn btn-default">TOGGLE SOLUTION</a>
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
