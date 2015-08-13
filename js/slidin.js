@@ -86,3 +86,10 @@ $(document).ready(function(){
         $(".solution-5-prompt").slideToggle("slow");
     });
 });
+
+$(document).ready(function(){
+    $(".solution-toggle-6-p").click(function(){
+        $(".solution-6-p").slideToggle("slow");
+        $(".solution-6-prompt").slideToggle("slow");
+    });
+});
