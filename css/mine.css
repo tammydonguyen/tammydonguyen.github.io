@@ -8,7 +8,7 @@ body {
 	text-align: center;
 	color: white;
 	font-family: 'Source Sans Pro', sans-serif;
-	margin-top: 100px;
+	margin-top: 10%;
 }
 
 h1 {
@@ -92,7 +92,7 @@ a.icons {
 #info, #about, #connect, #resources {
 	text-align: center;
 	background-color:rgba(50,50,50,0.3);
-	width:450px;
+	width:50%;
 	margin: -25px auto auto auto;
 	padding:10px;
 }
@@ -123,7 +123,7 @@ a.icons {
 	font-family: Lucida Console;
 	text-align: left;
 	margin: 0px auto 10px auto;
-	width: 400px;
+	width: 81%;
 	background-color:white;
 	padding: 7px 10px 7px 12px;
 	border-radius: 0px 0px 4px 4px;
@@ -135,7 +135,7 @@ a.icons {
 	border-bottom: solid 1px #CCCCCC;
 	padding: 1px 10px 0px 7px;
 	height: 20px;
-	width: 405px;
+	width: 82%;
 } 
 #red, #yellow, #green {
 	width: 10px;
@@ -160,37 +160,5 @@ a.icons {
 @media (max-width: 800px) {
 	h1 {
 		font-size: 40px;
-		margin: 5px auto auto auto;
 	}
-	#headshot {
-		margin: auto auto auto auto;
-	}
-	#info, #about, #connect, #resources {
-		margin: 5px auto auto auto;
-		width: 300px;
-	} #about, #connect, #resources {
-		margin: auto;
-	}	
-	#terminal {
-		font-size: 8px;
-		line-height: 10px;
-		width: 260px;
-		margin-bottom: 5px;
-	}    
-    #topbarthing {
-        height: 10px;
-        width: 265px;
-    }       
-    #red, #yellow, #green {
-        width: 5px;
-        height:5px;
-        border-radius: 5px;
-        margin: 2px 7px 3px -3px;
-    } 
-    a.icons {
-    	margin: auto 7px auto 7px;
-    	font-size: 16px;
-    	width: 20px;
-    	height: 20px;
-    }
 }
