@@ -3,7 +3,7 @@
 @import url(../fonts/font-awesome/css/font-awesome.min.css);
 
 body {
-    background: url("../assets/bgimg.jpg") no-repeat center center fixed;
+    background: #99bbdd no-repeat center center fixed;
     background-size: cover;
 	text-align: center;
 	color: white;
@@ -46,7 +46,7 @@ a.nav {
     font-size: 14px;
     text-decoration: none;
     font-weight: bold;
-    color:rgba(50,50,50,.8);
+    color:#445566;
     background: rgba(255,255,255,.8);
     padding: 5px 8px 5px 8px;
     margin: 12px 4px 4px 4px;
@@ -55,7 +55,7 @@ a.nav {
     transition: background-color .4s;
     transition: color .4s;
 } a.nav:hover {
-    background: rgba(85,153,238,.5);
+    background: #6688aa;
     border: 1px solid rgba(85,153,238,.3);
     color: white;
 }
@@ -91,40 +91,39 @@ a.icons {
 
 #info, #about, #connect, #resources {
 	text-align: center;
-	background-color:rgba(50,50,50,0.3);
-	width:50%;
+	background-color:rgba(255,255,255,0.3);
+	width:40%;
 	margin: -25px auto auto auto;
 	padding:10px;
 }
-#about {
-	margin: auto;
-    padding-top: 0px;
-	display: none;
+#about, #connect, #resources {
+	margin: auto auto 100px auto;
+	display:none;
+	padding-top:0px;
 }
 #connect {
-    margin: auto;
     padding-bottom: 15px;
-    padding-top: 0px;
-    display: none;
 }
 #resources {
-    margin: auto;
     padding-bottom: 10px;
-    padding-top: 0px;
-    display: none;
 }
 #resources a {
 	color: white;
 }
 
+.here {
+	padding-top:50px;
+	margin-top: -50px;
+}
+
 #terminal {
 	font-size: 12px;
-	color:black;
+	color:#ffffee;
 	font-family: Lucida Console;
 	text-align: left;
 	margin: 0px auto 10px auto;
-	width: 81%;
-	background-color:white;
+	width: 90%;
+	background-color:#445566;
 	padding: 7px 10px 7px 12px;
 	border-radius: 0px 0px 4px 4px;
 	line-height: 14px;
@@ -132,33 +131,17 @@ a.icons {
 	margin: auto;
 	background-color:#E6E6E6;
 	border-radius: 4px 4px 0px 0px;
-	border-bottom: solid 1px #CCCCCC;
 	padding: 1px 10px 0px 12px;
-	height: 20px;
-	width: 81%;
+	height: 15px;
+	width: 90%;
 } 
-#red, #yellow, #green {
-	width: 10px;
-	height:10px;
-	border-radius: 10px;
-	margin: 4px 9px 3px -2px;
-	float:left;
-} 
-#red {
-	background-color:#FF4D4D;
-	border: solid 1px #B83737;
+.output {
+	color: #e0e0e0;
 }
-#yellow {
-	background-color:#FFDB4D;
-	border: solid 1px #CCAF3E;
-} 
-#green {
-	background-color:#33CC33;
-	border: solid 1px #29A329;
+.string {
+	color:#e8e4a4;
 }
 
-@media (max-width: 800px) {
-	h1 {
-		font-size: 40px;
-	}
+::-webkit-scrollbar {
+    color: #99bbdd;
 }

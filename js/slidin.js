@@ -1,11 +1,13 @@
-
-
 // index
 $(document).ready(function(){
 	$(".about").click(function(){
+        $('html,body').animate({
+        scrollTop: $(".here").offset().top},
+        'slow');
 		$("#about").slideToggle("slow");
         $("#connect").slideUp();
         $("#resources").slideUp();
+        
 	});
 });
 $(document).ready(function(){
