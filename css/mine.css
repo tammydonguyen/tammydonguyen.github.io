@@ -8,7 +8,7 @@ body {
 	text-align: center;
 	color: white;
 	font-family: 'Source Sans Pro', sans-serif;
-	margin-top: 10%;
+	margin-top:10px;
 }
 
 h1 {
@@ -18,66 +18,19 @@ h1 {
 	font-weight: bold;
 	font-size: 60px;
 	margin-top: 10px;
-}
-
-h4 {
-	font-family: 'Slabo 27px', serif;
-	letter-spacing: 0px;
-	color: white;
-	font-size: 17px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
-
-p {
-  	font-size: 15px;
+	text-shadow: 3px 3px #6688aa;
 }
 
 a:link, a:visited {
 	text-decoration: none;
-    color: rgba(50,50,50,.6);
+    color: #ddffff;
 } a:hover {
     text-decoration: underline;
 }
 
-a.nav {
-    display:inline-block;
-    width: auto;
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: bold;
-    color:#445566;
-    background: rgba(255,255,255,.8);
-    padding: 5px 8px 5px 8px;
-    margin: 12px 4px 4px 4px;
-    border-radius: 3px;
-    border: 1px solid rgba(255,255,255,.5);
-    transition: background-color .4s;
-    transition: color .4s;
-} a.nav:hover {
-    background: #6688aa;
-    border: 1px solid rgba(85,153,238,.3);
-    color: white;
-}
-
-a.icons {
-    display:inline-block;
-    width: 27px;
-    height: 27px;
-    font-size: 22px;
-    text-decoration: none;
-    color: white;
-    padding: 7px 8px 8px 8px;
-    margin: 0px 20px 0px 0px;
-    border-radius: 27px;
-    border: 2px solid white;
-    transition: background .3s;
-} a.icons:hover {
-    background: rgba(255,255,255,.3);
-}
-
 #headshot {
 	margin:auto;
+	margin-bottom: 0px;
 	width: 145px;
 	height: 145px;
 	background-image: url('../assets/head1.jpg');
@@ -85,6 +38,7 @@ a.icons {
 	background-position: center;
 	border: 3px solid white;
 	border-radius: 145px;
+	box-shadow: 3px 3px #6688aa;
 } #headshot:hover {
 	background-image: url('../assets/head2.jpg');
 }
@@ -92,30 +46,15 @@ a.icons {
 #info, #about, #connect, #resources {
 	text-align: center;
 	background-color:rgba(255,255,255,0.3);
-	width:40%;
+	width:60%;
 	margin: -25px auto auto auto;
 	padding:10px;
 }
-#about, #connect, #resources {
-	margin: auto auto 100px auto;
-	display:none;
-	padding-top:0px;
+p {
+	text-shadow: 1px 1px #6688aa;
+	margin: auto;
+	font-size: 18px;
 }
-#connect {
-    padding-bottom: 15px;
-}
-#resources {
-    padding-bottom: 10px;
-}
-#resources a {
-	color: white;
-}
-
-.here {
-	padding-top:50px;
-	margin-top: -50px;
-}
-
 #terminal {
 	font-size: 12px;
 	color:#ffffee;
@@ -129,6 +68,7 @@ a.icons {
 	line-height: 14px;
 } #topbarthing {
 	margin: auto;
+	margin-top:10px;
 	background-color:#E6E6E6;
 	border-radius: 4px 4px 0px 0px;
 	padding: 1px 10px 0px 12px;
@@ -139,7 +79,7 @@ a.icons {
 	color: #e0e0e0;
 }
 .string {
-	color:#e8e4a4;
+	color:#f2f1a6;
 }
 
 ::-webkit-scrollbar {
