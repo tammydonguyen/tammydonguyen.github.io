@@ -133,15 +133,15 @@ a.icons {
 	background-color:#E6E6E6;
 	border-radius: 4px 4px 0px 0px;
 	border-bottom: solid 1px #CCCCCC;
-	padding: 1px 10px 0px 7px;
+	padding: 1px 10px 0px 12px;
 	height: 20px;
-	width: 82%;
+	width: 81%;
 } 
 #red, #yellow, #green {
 	width: 10px;
 	height:10px;
 	border-radius: 10px;
-	margin: 4px 9px 3px 0px;
+	margin: 4px 9px 3px -2px;
 	float:left;
 } 
 #red {

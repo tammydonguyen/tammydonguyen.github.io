@@ -74,9 +74,14 @@ a.icons {
 	height: 70px;
 	background-image: url('../assets/head2.jpg');
 	background-size: cover;
-	border: 3px solid white;
+	border: 3px solid rgba(150,150,150,0.6);
 	border-radius: 50px;
 	margin-right: 5px;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+} #headshot:hover {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 #info, #about, #connect, #resources {

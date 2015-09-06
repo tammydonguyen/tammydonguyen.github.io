@@ -1,4 +1,4 @@
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 	h1 {
 		font-size: 40px;
 		margin: 5px auto auto auto;
@@ -6,21 +6,20 @@
 	#headshot {
 		margin: auto auto auto auto;
 	}
-	#info, #about, #connect {
+	#info, #about, #connect, #resources {
 		margin: 5px auto auto auto;
-		width: 300px;
-	} #about, #connect {
+		width: 80%;
+	} #about, #connect, #resources {
 		margin: auto;
 	}	
 	#terminal {
-		font-size: 8px;
-		line-height: 10px;
-		width: 260px;
+		font-size: 10px;
 		margin-bottom: 5px;
+		line-height: 10px;
 	}    
     #topbarthing {
-        height: 10px;
-        width: 265px;
+        height: 12px;
+        padding-top: 2px;
     }       
     #red, #yellow, #green {
         width: 5px;
