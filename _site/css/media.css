@@ -1,0 +1,61 @@
+@media (max-width: 900px) {
+	body {
+		padding-bottom: 30px;
+	}
+	h1 {
+		font-size: 50px;
+		margin: 5px auto auto auto;
+	}
+	#headshot {
+		width: 120px;
+		height:120px;
+		background-size: 120px;
+		margin: auto;
+	}
+	#info {
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 700px) {
+	body {
+
+	background: linear-gradient(#99bbdd 0%, #99bbdd 60%, #ccaaaa 60%, #ccaaaa); /* W3C */
+	}
+	h1 {
+		font-size: 40px;
+		margin: 5px auto auto auto;
+	}
+	#headshot {
+		width: 100px;
+		height:100px;
+		background-size: 100px;
+		margin: auto auto auto auto;
+	}
+	#info {
+		margin: 5px auto auto auto;
+		width:90%;
+	}
+
+	#terminal {
+		font-size: 10px;
+		margin-bottom: 5px;
+		line-height: 10px;
+	}    
+    #topbarthing {
+        height: 12px;
+        padding-top: 2px;
+    }       
+    #red, #yellow, #green {
+        width: 5px;
+        height:5px;
+        border-radius: 5px;
+        margin: 2px 7px 3px -3px;
+    } 
+    a.icons {
+    	margin: auto 5px -3px 0px;
+    	font-size: 10px;
+    	width: 13px;
+    	height: 13px;
+    }
+}
