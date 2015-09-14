@@ -41,6 +41,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="/cs61a/practice-problems/iter.html">Iterators</a></li>
             <li><a href="/cs61a/practice-problems/scheme.html">Scheme</a></li>
+            <li><a href="/cs61a/practice-problems/mt1.html">Midterm 1</a></li>
             <li><a href="#">Midterm 2</a></li>
             <li><a href="/cs61a/practice-problems/final.html">Final</a></li>
           </ul>
@@ -55,6 +56,7 @@
 <xmp theme="journal" style="display:none;">
 <div id="sidebar" style="margin-top: -10px">
     <h3>Navigation</h3>
+    <a href="#nonlocal">Nonlocal and HOF</a> <br />
     <a href="#scope">Variable Scope</a> <br />
     <a href="#list-mut">List Mutability</a> <br />
     <a href="#link">Mutable Linked Lists</a> <br />
@@ -64,6 +66,39 @@
 <p>These problems are designed to be around exam difficulty. For more basic problems, see the topic-based guides and practice problems!</p>
 
 ---
+
+<a name="nonlocal" class="anchor"></a>
+## Nonlocal and Higher Order Functions
+Draw the environment diagram for the following code:
+
+    def what(a, b):
+        x = a
+        def ha(ha):
+            nonlocal x
+            x = ha * 2
+            return x
+        return b(ha(x), x)
+
+    what(4, lambda x, y : x + y)
+
+<a class="btn btn-default" target="_blank" href="http://pythontutor.com/visualize.html#code=def+what(a,+b%29%3A%0A++++x+%3D+a%0A++++def+ha(ha%29%3A%0A++++++++nonlocal+x%0A++++++++x+%3D+ha+*+2%0A++++++++return+x%0A++++return+b(ha(x%29,+x%29%0A%0Awhat(4,+lambda+x,+y+%3A+x%29&mode=display&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0">OPEN SOLUTION</a>  
+
+What makes `what` a higher order function?
+a. it returns a function (what function?)
+b. it takes in a function as an argument
+
+<blockquote class="solution-4">`what` is not actually returning a function, but rather a function *call* to `b`. What makes it a higher order function is that it takes in a function as its second argument.</blockquote>
+
+<a class="solution-toggle-4 btn btn-default">TOGGLE SOLUTION</a>
+
+Write the simplest function possible (1-2 lines) that does the exact same thing as `what` for any input `a`, `b`. 
+
+<pre class="solution-3"><code>def foo(a, b):
+    a *= 2
+    return b(a, a)</code></pre>
+
+<a class="solution-toggle-3 btn btn-default">TOGGLE SOLUTION</a>
+
 
 <a name="scope" class="anchor"></a>
 ## Variable Scope
