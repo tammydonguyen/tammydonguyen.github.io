@@ -1,5 +1,6 @@
 @media (max-width: 900px) {
 	body {
+		margin-top:10px;
 		padding-bottom: 30px;
 	}
 	h1 {

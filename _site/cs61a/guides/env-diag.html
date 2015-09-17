@@ -41,6 +41,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="/cs61a/practice-problems/iter.html">Iterators</a></li>
             <li><a href="/cs61a/practice-problems/scheme.html">Scheme</a></li>
+            <li><a href="/cs61a/practice-problems/mt1.html">Midterm 1</a></li>
             <li><a href="/cs61a/practice-problems/mt2.html">Midterm 2</a></li>
             <li><a href="/cs61a/practice-problems/final.html">Final</a></li>
           </ul>
@@ -58,13 +59,73 @@
 
 ----
 
-<!-- Environment diagrams are, I believe, the most valuable learning tool you can master in 61A. Although they come off as very tricky at first, it's only a matter of knowing all the rules, and then getting a ton of practice in. Mastering environment diagrams will ensure that you know how assignment statements, call expressions, variable scope, and mutation works. -->
+Although environment diagrams come off as very scary and daunting, it really just is a diagram that keeps track of your variables. It does absolutely nothing else. An environment diagram consists solely of **frames** containing **variables** bound to their **values**. Non-primitive values (such as function objects) are drawn on the side of the frames and have arrows pointing to them. 
+
+Environment diagrams are, I believe, the most valuable learning tool you can master in 61A. Although they come off as very tricky at first, it's only a matter of knowing all the rules, and then getting a ton of practice in. Mastering environment diagrams will ensure that you know how assignment statements, call expressions, variable scope, and mutation works.
+
+---
+
+For 61A purposes, only 3 things can change the state of your environment diagram: `def` statements, assignment statements, and call expressions. Below are the steps to evaluate each of these.
+
+## def Statements
+Evaluating `def` statements in an environment diagram requires the simplest steps, yet students still often misunderstand how to properly execute them. All a `def` statement does is create a new function object in the current environment and binds it to its name. That's it! No evaluating anything, no looking up variables.
+
+#### Steps
+1. Draw the function object. It should look like this: `func <function name>(<params>) [parent=<parent frame>]`. 
+2. Look for the function's name in the current frame. If it already exists, erase the current binding.
+3. Draw an arrow from the name to the function object.
+<iframe width="800" height="250" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+foo(x,+y%29%3A%0A++++return+x+%2B+y&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+#### Important Notes (and Common Pitfalls)
+1. Do not evaluate the body of the function. After completing the 3 steps above, you are DONE. Skip the entire body (all the lines indented under the `def` header).
+2. Draw the entire function object as I've described above and draw the arrow clearly from the name in the frame to the object. Some graders will mark off points if it does not follow this outline exactly.
+
+## Assignment Statements
+An assignment statement is any statement with a single equals sign: `=`, such as `x = 3`. This is not to be confused with the equality operator `==`. Although assignment statements look fairly simple and even trivial, it still involves a series of steps:
+
+#### Steps
+1. Evaluate the **expression** on the right hand side. 
+2. Look for the name on the left hand side of the `=` in the current frame of your environment. If it does not exist, write it in.
+3. Bind the value you found in step one to the name you found/wrote in step 2.
+    - if the value is primitive (numbers, strings, booleans, `None`) write it directly next to the name inside the frame
+    - if the value is non-primitive (function objects, lists, tuples, etc.), draw it to the side of the frames and connect it to the name with an arrow
+
+<iframe width="800" height="250" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=x+%3D+5+%2B+10%0Ay+%3D+x&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+#### Important Notes (and Common Pitfalls)
+1. Do NOT write expressions (e.g. `5 + 10`) directly in the frame. Notice how only VALUES are written in the diagram. Expressions have no place there. 
+2. Do not write variables next to names or draw arrows to other variables. Variables *are not* values. Names can only be bound to values.
+
+If you run into one of the above, you did not complete step 1 for assignment statements. That's why this is the most important step! 
+
+
+## Call Expressions
+This is the most tricky out of the three, but follow these steps *exactly* (actually go through each of the steps!) and you will never get confused. 
+
+#### Steps
+1. Evaluate the outermost **operator**. The operator is the name to the left of the set of parentheses. In the expression `foo(bar(x))(y)`, `foo` is the operator. The value should be a function object.
+2. Evaluate each of the operands one by one from left to right in the current environment. 
+3. Open a new frame and label it with the **intrinsic name** of the function found in step 1. Also label the parent of the frame with the parent of the function. 
+4. Bind the formal parameters to the values of the operands found in step 2.
+5. Evaluate the body of the function in the new environment.
+
+#### Important Notes (and Common Pitfalls)
+1. Evaluate the operands in the environment where the function was called. Students often open the new frame before evaluating the operands, which leads them to evaluate the operands in this new frame.
+2. Do not open a new frame until you've evaluated all the operands, since they might be call expressions which requires opening more frames. Order of the frames does matter for points!
+3. The first thing you do when you open a new frame is bind the parameters.
+
+Let's put it all together now!
+
+<iframe width="800" height="350" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+foo(x,+y%29%3A%0A++++temp+%3D+x+%0A++++x+%3D+y%0A++++y+%3D+temp%0A++++return+x+-+y%0A%0Az+%3D+foo(5,+10%29&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+
+**Bonus question:** What does `foo` return doing for all input `x`, `y`?
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 <link href="../../css/lumen.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/slidin.js"></script>
 
 <style>
 .navbar .nav>li>.dropdown-menu:before, .navbar .nav>li>.dropdown-menu:after {
