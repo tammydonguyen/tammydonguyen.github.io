@@ -103,23 +103,6 @@ scm> (append '(c s) '(6 1 a))
     )</span></code></pre>
     <a class="solution-toggle-3-p btn btn-default">TOGGLE SOLUTION</a>
 
-2. Implement `can-sum`, which takes two lists and returns `True` if one number from `lst1` and one number from `lst2` can add up to `sum`.
-
-    <pre><code>scm> (append '() '(1 2 3))
-(1 2 3)
-scm> (append '(a b c) '())
-(a b c)
-scm> (append '(c s) '(6 1 a))
-(c s 6 1 a)</code></pre>
-
-    <pre><code>(define (append lst1 lst2)
-    <span class="solution-3-prompt">  "YOUR CODE HERE"
-    )</span>
-    <span class="solution-3-p">  (if (null? lst1) lst2
-      &nbsp;(cons (car lst1) (append (cdr lst1) lst2)))
-    )</span></code></pre>
-    <a class="solution-toggle-3-p btn btn-default">TOGGLE SOLUTION</a>
-
 <a name="tail" class="anchor"></a>
 ## Tail Recursion
 1. Look at the solutions I've provided for `attach` and `append`. What are the tail calls? Are the functions tail recursive?  
