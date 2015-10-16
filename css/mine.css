@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 @import url(http://fonts.googleapis.com/css?family=Slabo+27px);
 @import url(../fonts/font-awesome/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
 body {
 	text-align: center;
@@ -68,22 +69,21 @@ a:link, a:visited {
 }
 
 #terminal {
-	font-size: 12px;
+	font-size: 13px;
 	color:#f8f8f8;
-	font-family: Lucida Console;
+	font-family: 'Inconsolata', ;
 	text-align: left;
 	margin: 0px auto 10px auto;
 	width: 90%;
 	background-color:#445566;
-	padding: 7px 10px 7px 12px;
+	padding:10px 0px 0px 15px;
 	border-radius: 0px 0px 4px 4px;
-	line-height: 14px;
 } #topbarthing {
 	margin: auto;
 	margin-top:10px;
 	background-color:#e3e3e3;
 	border-radius: 4px 4px 0px 0px;
-	padding: 1px 10px 0px 12px;
+	padding: 1px 9px 0px 6px;
 	height: 15px;
 	width: 90%;
 } 
@@ -97,15 +97,15 @@ a:link, a:visited {
 .fa {
 	color:#959595;
 } .fa-linkedin:hover {
-	color: #3c77d8;
+	color: #5695b6;
 } .fa-github:hover {
-	color: #393939;
+	color: #474747;
 } .fa-stack-overflow:hover {
-	color: #ffb865;
+	color: #ffa35d;
 } .fa-facebook:hover {
-	color: #4776b6;
+	color: #7e90b4;
 } .fa-instagram:hover {
-	color: #f3e5d5;
+	color: #b8a084;
 }
 
 ul.links {
