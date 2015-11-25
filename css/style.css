@@ -51,9 +51,12 @@ a:link, a:visited {
 }
 
 .right {
-	width: 60%;
-	float: left;
+	padding-left: 10px;
+	width: 55%;
+	float: right;
 	display:inline;
+	color: #959595;
+	text-align: left;
 }
 
 .headshot {
