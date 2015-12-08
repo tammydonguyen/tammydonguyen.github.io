@@ -44,14 +44,13 @@ a:link, a:visited {
 
 .left {
 	float: left;
-	width:40%;
+	width:42%;
 	text-align: right;
 	display:inline;
-	padding-top:70px;
+	padding-top:90px;
 }
 
 .right {
-	padding-left: 10px;
 	width: 55%;
 	float: right;
 	display:inline;
@@ -63,33 +62,55 @@ a:link, a:visited {
 	width: 100px;
 	height: 100px;
 	transform-style: preserve-3d;
-	background-image: url('../assets/head1.jpg');
+	background-image: url('../assets/me2.jpg');
 	background-size: 110px;
 	background-position: center;
 	border-radius: 100px;
 	display:inline-block;
-	margin:20px auto auto auto;
+	margin:0px 5px -5px auto;
 }
 
 #terminal {
 	font-size: 13px;
 	color:#f8f8f8;
-	font-family: 'Inconsolata', ;
+	font-family: 'Inconsolata';
 	text-align: left;
 	margin: 0px auto 10px auto;
-	width: 90%;
+	width: 100%;
 	background-color:#445566;
 	padding:10px 0px 0px 15px;
 	border-radius: 0px 0px 4px 4px;
-} #topbarthing {
+} 
+
+#topbarthing {
 	margin: auto;
 	margin-top:10px;
 	background-color:#e3e3e3;
 	border-radius: 4px 4px 0px 0px;
 	padding: 1px 9px 0px 6px;
-	height: 15px;
-	width: 90%;
+	height: 18px;
+	width: 100%;
+} 	    
+.circle {
+	width: 8px;
+	height:8px;
+	border-radius: 8px;
+	margin: 4px 7px 1px 0px;
+	float:left;
 } 
+.red {
+	background-color:#FF4D4D;
+	border: solid 1px #B83737;
+}
+.yellow {
+	background-color:#FFDB4D;
+	border: solid 1px #CCAF3E;
+} 
+.green {
+	background-color:#33CC33;
+	border: solid 1px #29A329;
+}
+
 .input {
 	color: #c7c7c7;
 }
@@ -108,7 +129,9 @@ a:link, a:visited {
 } .fa-facebook:hover {
 	color: #7e90b4;
 } .fa-instagram:hover {
-	color: #b8a084;
+	color: #a09070;
+} .fa-file-pdf-o:hover {
+	color: #de5959;
 }
 
 ul.links {
