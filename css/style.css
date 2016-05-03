@@ -132,6 +132,8 @@ a:link, a:visited {
 	color: #a09070;
 } .fa-file-pdf-o:hover {
 	color: #de5959;
+} .fa-spotify:hover {
+	color: #3fb563;
 }
 
 ul.links {
